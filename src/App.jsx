@@ -930,7 +930,7 @@ export default function App() {
               </div>
 
               {/* Weather Widget */}
-              <div className="relative z-10 flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3 mb-8 w-max shadow-sm">
+              <div className="relative z-10 flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3 mb-8 w-full max-w-[290px] xs:max-w-xs sm:max-w-md sm:w-max shadow-sm">
                 <div className="w-10 h-10 flex items-center justify-center bg-white/20 rounded-xl">
                   <i className="fa-solid fa-cloud-sun text-yellow-300 text-xl"></i>
                 </div>
@@ -944,10 +944,10 @@ export default function App() {
               <div className="relative z-[50] w-full bg-white text-slate-800 rounded-[20px] sm:rounded-[28px] p-4 sm:p-6 shadow-2xl border border-slate-100 flex flex-col xl:flex-row gap-4 xl:items-end">
                 
                 {/* Asal & Tujuan */}
-                <div className="flex-1 flex flex-row items-end gap-2 relative">
+                <div className="flex-1 flex flex-col sm:flex-row sm:items-end gap-3 sm:gap-2 relative">
                   
                   {/* Origin */}
-                  <div className="flex-1 min-w-0">
+                  <div className="w-full sm:flex-1 min-w-0">
                     <label className="block text-[10px] font-extrabold text-slate-400 uppercase tracking-wider mb-1.5">{lang === 'id' ? 'ASAL' : 'ORIGIN'}</label>
                     <div className="relative">
                       <span className="absolute left-2.5 xs:left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs xs:text-sm">
@@ -956,7 +956,7 @@ export default function App() {
                       <select 
                         value={origin} 
                         onChange={(e) => setOrigin(e.target.value)} 
-                        className="w-full border border-slate-200 bg-white rounded-xl pl-8 xs:pl-10 pr-2 xs:pr-4 py-2.5 xs:py-3 text-xs xs:text-sm font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-primary appearance-none cursor-pointer"
+                        className="w-full border border-slate-200 bg-white rounded-xl pl-8 xs:pl-10 pr-8 xs:pr-10 py-2.5 xs:py-3 text-xs xs:text-sm font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-primary appearance-none cursor-pointer"
                       >
                         {locations.map(loc => (
                           <option key={loc} value={loc}>{loc}</option>
@@ -968,14 +968,13 @@ export default function App() {
                   {/* Swap Button */}
                   <button 
                     onClick={swapPorts} 
-                    className="w-8 h-8 rounded-full bg-slate-50 border border-slate-200 text-slate-500 hover:text-primary hover:bg-slate-100 transition flex items-center justify-center flex-shrink-0 mb-1.5 sm:mb-2 shadow-sm"
-                    style={{ transform: 'translateY(-2px)' }}
+                    className="absolute right-4 top-[42px] sm:relative sm:right-0 sm:top-0 w-8 h-8 rounded-full bg-slate-50 border border-slate-200 text-slate-500 hover:text-primary hover:bg-slate-100 transition flex items-center justify-center flex-shrink-0 sm:mb-2 shadow-sm z-10"
                   >
-                    <i className="fa-solid fa-arrow-right-arrow-left text-xs"></i>
+                    <i className="fa-solid fa-arrow-right-arrow-left text-xs rotate-90 sm:rotate-0"></i>
                   </button>
 
                   {/* Destination */}
-                  <div className="flex-1 min-w-0">
+                  <div className="w-full sm:flex-1 min-w-0">
                     <label className="block text-[10px] font-extrabold text-slate-400 uppercase tracking-wider mb-1.5">{lang === 'id' ? 'TUJUAN' : 'DESTINATION'}</label>
                     <div className="relative">
                       <span className="absolute left-2.5 xs:left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs xs:text-sm">
@@ -984,7 +983,7 @@ export default function App() {
                       <select 
                         value={destination} 
                         onChange={(e) => setDestination(e.target.value)} 
-                        className="w-full border border-slate-200 bg-white rounded-xl pl-8 xs:pl-10 pr-2 xs:pr-4 py-2.5 xs:py-3 text-xs xs:text-sm font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-primary appearance-none cursor-pointer"
+                        className="w-full border border-slate-200 bg-white rounded-xl pl-8 xs:pl-10 pr-8 xs:pr-10 py-2.5 xs:py-3 text-xs xs:text-sm font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-primary appearance-none cursor-pointer"
                       >
                         {locations.map(loc => (
                           <option key={loc} value={loc}>{loc}</option>
@@ -1069,7 +1068,7 @@ export default function App() {
                 </div>
 
                 {/* Passengers & Search Button */}
-                <div className="grid grid-cols-2 items-end gap-3 sm:gap-4 xl:w-96">
+                <div className="flex flex-col sm:grid sm:grid-cols-2 sm:items-end gap-3 sm:gap-4 xl:w-96 w-full">
                   
                   {/* Passengers */}
                   <div className="relative z-[200]">
@@ -1087,7 +1086,7 @@ export default function App() {
                     </div>
 
                     {isPassengerModalOpen && (
-                      <div className="absolute top-[calc(100%+8px)] left-0 w-80 bg-white border border-slate-200 rounded-2xl shadow-2xl z-[200] p-4 text-left">
+                      <div className="absolute top-[calc(100%+8px)] left-0 w-[calc(100vw-64px)] sm:w-80 bg-white border border-slate-200 rounded-2xl shadow-2xl z-[200] p-4 text-left">
                         <h4 className="font-extrabold text-slate-900 text-sm mb-4">{lang === 'id' ? 'Atur Penumpang' : 'Set Passenger'}</h4>
                         
                         <div className="space-y-4 mb-4">
@@ -1147,7 +1146,7 @@ export default function App() {
                       setBookingFlowState('outbound_select');
                       showToast(t.toastRouteUpdated, "success");
                     }} 
-                    className="bg-accent hover:bg-orange-600 text-white rounded-xl py-2.5 xs:py-3 px-4 font-bold text-xs xs:text-sm tracking-wider uppercase transition shadow-lg shadow-orange-100 flex items-center justify-center gap-2"
+                    className="w-full bg-accent hover:bg-orange-600 text-white rounded-xl py-2.5 xs:py-3 px-4 font-bold text-xs xs:text-sm tracking-wider uppercase transition shadow-lg shadow-orange-100 flex items-center justify-center gap-2"
                   >
                     <i className="fa-solid fa-magnifying-glass"></i>
                     <span>Cari</span>
