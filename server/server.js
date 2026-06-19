@@ -14,7 +14,7 @@ async function getSnapInstance() {
   let isProduction = process.env.MIDTRANS_IS_PRODUCTION === 'true';
 
   try {
-    const dbUrl = process.env.FIREBASE_DATABASE_URL || '';
+    const dbUrl = process.env.FIREBASE_DATABASE_URL || 'https://seatiket-2ddf9-default-rtdb.asia-southeast1.firebasedatabase.app';
     const response = await fetch(`${dbUrl}/settings.json`);
     if (response.ok) {
       const settings = await response.json();
