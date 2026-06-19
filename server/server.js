@@ -88,9 +88,13 @@ app.get('/api/payment/status/:order_id', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`===================================================`);
-  console.log(`Midtrans Payment Bridge running on port ${PORT}`);
-  console.log(`Dynamic API Keys loaded from Firebase RTDB settings`);
-  console.log(`===================================================`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`===================================================`);
+    console.log(`Midtrans Payment Bridge running on port ${PORT}`);
+    console.log(`Dynamic API Keys loaded from Firebase RTDB settings`);
+    console.log(`===================================================`);
+  });
+}
+
+module.exports = app;

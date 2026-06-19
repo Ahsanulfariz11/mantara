@@ -845,8 +845,7 @@ export default function App() {
         }
       }
 
-      const host = window.location.hostname || '127.0.0.1';
-      const response = await fetch(`http://${host}:3001/api/payment/create`, {
+      const response = await fetch('/api/payment/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -950,8 +949,7 @@ export default function App() {
   const checkPaymentStatus = async (bookingId) => {
     try {
       showToast(lang === 'id' ? 'Memeriksa status pembayaran...' : 'Checking payment status...', 'info');
-      const host = window.location.hostname || '127.0.0.1';
-      const response = await fetch(`http://${host}:3001/api/payment/status/${bookingId}`);
+      const response = await fetch(`/api/payment/status/${bookingId}`);
       if (!response.ok) throw new Error("Failed to fetch status");
       const data = await response.json();
       

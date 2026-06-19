@@ -34,7 +34,7 @@ export default function PaymentManagement({ bookingHistory, showToast, globalSea
     setIsRefreshing(true);
     try {
       // Assuming server is running on localhost:3001 as defined in App.jsx
-      const response = await fetch(`http://localhost:3001/api/payment/status/${payment.bookingId}`);
+      const response = await fetch(`/api/payment/status/${payment.bookingId}`);
       const data = await response.json();
 
       if (data.transaction_status) {
@@ -79,7 +79,7 @@ export default function PaymentManagement({ bookingHistory, showToast, globalSea
 
     for (const payment of pendingPayments) {
       try {
-        const response = await fetch(`http://localhost:3001/api/payment/status/${payment.bookingId}`);
+        const response = await fetch(`/api/payment/status/${payment.bookingId}`);
         if (response.ok) {
           const data = await response.json();
           let newStatus = payment.status;
